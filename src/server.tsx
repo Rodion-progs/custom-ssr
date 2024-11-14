@@ -9,9 +9,11 @@ interface Props {
     character?: ICharacter;
 }
 
-export const render = ({ path, characters, character }: Props) =>
-       renderToString(
-                <StaticRouter location={path}>
-                    <App characters={characters} character={character} />
-                </StaticRouter>
-        );
+export type Render = (props: Props) => string;
+
+export const render: Render = ({ path, characters, character }) =>
+   renderToString(
+        <StaticRouter location={path}>
+            <App characters={characters} character={character} />
+        </StaticRouter>
+    );
