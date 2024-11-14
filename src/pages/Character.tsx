@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {useNavigate, useParams} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import {ICharacter} from "../types"
 
 const Character = ({ character }: {character?: ICharacter}) => {
@@ -7,7 +7,6 @@ const Character = ({ character }: {character?: ICharacter}) => {
     const [characterState, setCharacterState] = useState<ICharacter | null>(character || null)
 
     const params = useParams()
-    const navigate = useNavigate()
     useEffect(() => {
         if (!window || characterState) {
             return;
@@ -19,7 +18,7 @@ const Character = ({ character }: {character?: ICharacter}) => {
             setCharacterState(character)
         }
         fetchCharacters()
-    }, [characterState, params.id])
+    }, [characterState, params.id]);
 
     if (!character && !characterState) return (<div>Loading...</div>)
 
@@ -33,7 +32,7 @@ const Character = ({ character }: {character?: ICharacter}) => {
                 <p className="species">{species}</p>
                 {location && <p>Location: {location.name}</p>}
                 {origin && <p>Origin: {origin.name}</p>}
-                <button onClick={() => navigate("/")}>Back to Characters</button>
+                <Link to="/" className="button">Back to Characters</Link>
             </div>
     )
 }

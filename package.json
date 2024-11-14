@@ -4,23 +4,28 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "SET NODE_ENV=development && node server.js",
+    "dev": "SET NODE_ENV=development && bun run server.dev.ts --watch",
     "build": "yarn build:client && yarn build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --outDir dist/server --ssr src/server.tsx",
-    "prod": "SET NODE_ENV=production && node server.js"
+    "prod": "SET NODE_ENV=production && bun run server.ts --watch"
   },
   "dependencies": {
+    "bun": "^1.1.34",
     "compression": "^1.7.4",
     "express": "^4.19.2",
     "node-fetch": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
-    "serve-static": "^1.15.0"
+    "serve-static": "^1.15.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@types/compression": "^1.7.5",
+    "@types/express": "^5.0.0",
+    "@types/express-serve-static-core": "^5.0.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
